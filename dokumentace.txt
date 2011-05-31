@@ -1,57 +1,57 @@
 Dokumentace projektu =VocabularyPractice=
 =========================================
 
-Petr Støíbnı, 12. prosince 2008
+Petr StÅ™Ã­bnÃ½, 12. prosince 2008
 
-Zadání
+ZadÃ¡nÃ­
 ------
 
-: Øešil jsem úlohu pojmenovanou "Databáze slovíèek". Cílem bylo vytvoøit program za
-: pouití jazyka Haskell, kterı uivateli programu umoní procvièovat slovíèka
-: cizích jazykù. Jednotlivá slovíèka, která by mìla bıt definována v externím souboru,
-: mají bıt vybírána náhodnì.
+: Å˜eÅ¡il jsem Ãºlohu pojmenovanou "DatabÃ¡ze slovÃ­Äek". CÃ­lem bylo vytvoÅ™it program za
+: pouÅ¾itÃ­ jazyka Haskell, kterÃ½ uÅ¾ivateli programu umoÅ¾nÃ­ procviÄovat slovÃ­Äka
+: cizÃ­ch jazykÅ¯. JednotlivÃ¡ slovÃ­Äka, kterÃ¡ by mÄ›la bÃ½t definovÃ¡na v externÃ­m souboru,
+: majÃ­ bÃ½t vybÃ­rÃ¡na nÃ¡hodnÄ›.
 
 Popis algoritmu
 ---------------
 
-: Program mùeme rozdìlit na dva logické celky. Ten první najde všechny dostupné slovníky
-: (.txt soubory ve sloce programu) a dá uivateli vybrat jakı slovník a v jakém smìru 
-: (èesko-anglickı nebo anglicko-èeskı napø.) chce procvièovat.
+: Program mÅ¯Å¾eme rozdÄ›lit na dva logickÃ© celky. Ten prvnÃ­ najde vÅ¡echny dostupnÃ© slovnÃ­ky
+: (.txt soubory ve sloÅ¾ce programu) a dÃ¡ uÅ¾ivateli vybrat jakÃ½ slovnÃ­k a v jakÃ©m smÄ›ru 
+: (Äesko-anglickÃ½ nebo anglicko-ÄeskÃ½ napÅ™.) chce procviÄovat.
 
-: Druhá èást je pak smyèka, která neustále uivatele testuje na znalost slovní zásoby 
-: (slovíèka jsou vybírána náhodnì) dokud testování sám neukonèí.
+: DruhÃ¡ ÄÃ¡st je pak smyÄka, kterÃ¡ neustÃ¡le uÅ¾ivatele testuje na znalost slovnÃ­ zÃ¡soby 
+: (slovÃ­Äka jsou vybÃ­rÃ¡na nÃ¡hodnÄ›) dokud testovÃ¡nÃ­ sÃ¡m neukonÄÃ­.
 
-: Program je krátkı a dobøe dokumentovanı, vìøím, e další popis není potøeba.
+: Program je krÃ¡tkÃ½ a dobÅ™e dokumentovanÃ½, vÄ›Å™Ã­m, Å¾e dalÅ¡Ã­ popis nenÃ­ potÅ™eba.
 
-: Program neošetøuje chybné vstupy programu (prázdné øádky v souboru, atp.).
+: Program neoÅ¡etÅ™uje chybnÃ© vstupy programu (prÃ¡zdnÃ© Å™Ã¡dky v souboru, atp.).
 
-: Program byl vyzkoušen v interpretrech Hugs i GHCi.
+: Program byl vyzkouÅ¡en v interpretrech Hugs i GHCi.
 
 Moduly
 ------
 
-: Main --------	modul Main obsahuje funkci "main", která je hlavním vstupem programu
-: Vocabulary --	tento modul obsahuje prakticky všechny funkce programu; neshledal jsem 
-		toti ádnı dùvod pro rozdìlení programu do více modulù; program je stále
-		pøehlednı
+: Main --------	modul Main obsahuje funkci "main", kterÃ¡ je hlavnÃ­m vstupem programu
+: Vocabulary --	tento modul obsahuje prakticky vÅ¡echny funkce programu; neshledal jsem 
+		totiÅ¾ Å¾Ã¡dnÃ½ dÅ¯vod pro rozdÄ›lenÃ­ programu do vÃ­ce modulÅ¯; program je stÃ¡le
+		pÅ™ehlednÃ½
 
-Formát vstupu
+FormÃ¡t vstupu
 -------------
 
-: Všechny .txt soubory, které se nachází v adresáøi s programem jsou povaovány za potenciální 
-: vstupy (slovníky). Jejich seznam je k vıbìru uivateli nabídnut v prùbìhu programu, není tedy 
-: zapotøebí pøedávat programu vstupní parametry. Soubor slovníku je organizován velice jednoduše:
-: kadé slovníkovı záznam je na novém øádku a jednotlivá slova jsou oddìlena støedníkem. Souèástí
-: projektu jsou dva ukázkové vstupní soubory English.txt a Deutsch.txt.
+: VÅ¡echny .txt soubory, kterÃ© se nachÃ¡zÃ­ v adresÃ¡Å™i s programem jsou povaÅ¾ovÃ¡ny za potenciÃ¡lnÃ­ 
+: vstupy (slovnÃ­ky). Jejich seznam je k vÃ½bÄ›ru uÅ¾ivateli nabÃ­dnut v prÅ¯bÄ›hu programu, nenÃ­ tedy 
+: zapotÅ™ebÃ­ pÅ™edÃ¡vat programu vstupnÃ­ parametry. Soubor slovnÃ­ku je organizovÃ¡n velice jednoduÅ¡e:
+: kaÅ¾dÃ½ slovnÃ­kovÃ½ zÃ¡znam je na novÃ©m Å™Ã¡dku a jednotlivÃ¡ slova jsou oddÄ›lena stÅ™ednÃ­kem. SouÄÃ¡stÃ­
+: projektu jsou dva ukÃ¡zkovÃ© vstupnÃ­ soubory English.txt a Deutsch.txt.
 
-Seznam souborù
+Seznam souborÅ¯
 --------------
 
-: Main.hs ------------	modul Main se vstupní funkcí main
-: Vocabulary.hs ------	modul Vocabulary, kde se nachází všechny ostatní funkce projektu
-: English.txt --------	ukázkovı vstupní soubor
-: Deutsch.txt --------	ukázkovı vstupní soubor
-: dokumentace.txt ----	dokumentace projektu (právì ètete)
+: Main.hs ------------	modul Main se vstupnÃ­ funkcÃ­ main
+: Vocabulary.hs ------	modul Vocabulary, kde se nachÃ¡zÃ­ vÅ¡echny ostatnÃ­ funkce projektu
+: English.txt --------	ukÃ¡zkovÃ½ vstupnÃ­ soubor
+: Deutsch.txt --------	ukÃ¡zkovÃ½ vstupnÃ­ soubor
+: dokumentace.txt ----	dokumentace projektu (prÃ¡vÄ› Ätete)
 
 Reference
 ---------
@@ -61,8 +61,8 @@ Reference
 : http://book.realworldhaskell.org/read/
 
 
-Seznam øešitelù
+Seznam Å™eÅ¡itelÅ¯
 ---------------
 
-: Petr Støíbnı, uèo 325355 - nápad, programování, dokumentace
+: Petr StÅ™Ã­bnÃ½, uÄo 325355 - nÃ¡pad, programovÃ¡nÃ­, dokumentace
 
