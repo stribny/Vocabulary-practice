@@ -1,0 +1,68 @@
+Dokumentace projektu =VocabularyPractice=
+=========================================
+
+Petr Støíbný, 12. prosince 2008
+
+Zadání
+------
+
+: Øešil jsem úlohu pojmenovanou "Databáze slovíèek". Cílem bylo vytvoøit program za
+: použití jazyka Haskell, který uživateli programu umožní procvièovat slovíèka
+: cizích jazykù. Jednotlivá slovíèka, která by mìla být definována v externím souboru,
+: mají být vybírána náhodnì.
+
+Popis algoritmu
+---------------
+
+: Program mùžeme rozdìlit na dva logické celky. Ten první najde všechny dostupné slovníky
+: (.txt soubory ve složce programu) a dá uživateli vybrat jaký slovník a v jakém smìru 
+: (èesko-anglický nebo anglicko-èeský napø.) chce procvièovat.
+
+: Druhá èást je pak smyèka, která neustále uživatele testuje na znalost slovní zásoby 
+: (slovíèka jsou vybírána náhodnì) dokud testování sám neukonèí.
+
+: Program je krátký a dobøe dokumentovaný, vìøím, že další popis není potøeba.
+
+: Program neošetøuje chybné vstupy programu (prázdné øádky v souboru, atp.).
+
+: Program byl vyzkoušen v interpretrech Hugs i GHCi.
+
+Moduly
+------
+
+: Main --------	modul Main obsahuje funkci "main", která je hlavním vstupem programu
+: Vocabulary --	tento modul obsahuje prakticky všechny funkce programu; neshledal jsem 
+		totiž žádný dùvod pro rozdìlení programu do více modulù; program je stále
+		pøehledný
+
+Formát vstupu
+-------------
+
+: Všechny .txt soubory, které se nachází v adresáøi s programem jsou považovány za potenciální 
+: vstupy (slovníky). Jejich seznam je k výbìru uživateli nabídnut v prùbìhu programu, není tedy 
+: zapotøebí pøedávat programu vstupní parametry. Soubor slovníku je organizován velice jednoduše:
+: každé slovníkový záznam je na novém øádku a jednotlivá slova jsou oddìlena støedníkem. Souèástí
+: projektu jsou dva ukázkové vstupní soubory English.txt a Deutsch.txt.
+
+Seznam souborù
+--------------
+
+: Main.hs ------------	modul Main se vstupní funkcí main
+: Vocabulary.hs ------	modul Vocabulary, kde se nachází všechny ostatní funkce projektu
+: English.txt --------	ukázkový vstupní soubor
+: Deutsch.txt --------	ukázkový vstupní soubor
+: dokumentace.txt ----	dokumentace projektu (právì ètete)
+
+Reference
+---------
+
+: http://haskell.org
+: http://learnyouahaskell.com/chapters
+: http://book.realworldhaskell.org/read/
+
+
+Seznam øešitelù
+---------------
+
+: Petr Støíbný, uèo 325355 - nápad, programování, dokumentace
+
