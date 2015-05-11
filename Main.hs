@@ -3,11 +3,11 @@ import Vocabulary
 	     
 main :: IO ()
 main = do
-       -- Dam uzivateli vybrat slovnik  
-	   vocab <- getCustomVocabulary
+        -- Let the user choose dictionary
+        vocab <- getCustomVocabulary
 	   
-	   -- Dam uzivateli vybrat smer prekladu
-	   direction <- getDirection
+        -- Let the user choose direction for translation
+        direction <- getDirection
 	   
-	   -- Spustim hlavni smycku
-	   practice vocab direction
+        -- Run main loop
+        practice vocab direction
