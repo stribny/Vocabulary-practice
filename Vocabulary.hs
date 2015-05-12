@@ -5,97 +5,95 @@ import Control.Monad
 import System.IO 
 import System.Random
 
--- Smycka pro procvicovani slovicek (v-slovnik, d-smer)
+-- (v-dictionary, d-direction)
 practice v d = do
-    -- Vyberu nahodne slovo
+    -- Select random word
     randomNumber <- randomRIO (0::Int,((length v)-1)::Int)
     randomTuple  <- return (v !! randomNumber)
     
-    -- Zeptam se na preklad
-    putStr "\nPrelozte: "
+    -- Ask for translation
+    putStr "\nTranslate: "
     if d then putStr (show (fst randomTuple)) else putStr (show (snd randomTuple))
-    putStr " (k pro konec)\n"
+    putStr " (type k to quit)\n"
     
     x <- getLine
     
-    -- Konec?
+    -- Are we finished?
     if x == "k" 
         then do 
-             putStr "\nNashledanou! Spravna odpoved byla "
+             putStr "\nGood bye! The answer was "
            
-             -- Na zaver zobrazim jeste spravnou odpoved
+             -- Display correct answer
              if d then putStr (show (snd randomTuple)) else putStr (show (fst randomTuple))
         else do 
-             -- Podle smeru prekladu zkontroluju odpoved
+             -- Check if the answer is correct
              if d 
                 then
-                    if (snd randomTuple) == x then putStr "\nDobre\n" else putStr "\nSpatne\n"
+                    if (snd randomTuple) == x then putStr "\nWell done!\n" else putStr "\nIncorrect answer\n"
                 else
-                    if (fst randomTuple) == x then putStr "\nDobre\n" else putStr "\nSpatne\n"
+                    if (fst randomTuple) == x then putStr "\nWell done!\n" else putStr "\nIncorrect answer\n"
                 
-             -- Zavolam sebe sama - smycka
              practice v d
              
--- Dame uzivateli na vyber z dostupnych slovniku, vratime cestu k souboru slovniku ktery si vybere
+-- Lets user select dictionary file
 getCustomVocabulary = do
-    -- Zjistim jake soubory jsou v nasi slozce
+    -- Get files in current dir
     currentDir <- getCurrentDirectory
     directoryListing <- getDirectoryContents currentDir
     
-    -- Necham pouze .txt soubory, ktere identifikuji slovniky
+    -- Select only dictionary files
     vocabularies <- return [x | x <- directoryListing, isVocabularyFilePath x] 
     
     putStrLn ""
     
-    -- Dam uzivateli na vyber
+    -- Print listing
     vocabularyNames <- return (zipWith vocabularyName [0..] vocabularies)
     putStrLn (concat vocabularyNames)
-    putStrLn "Zadejte cislo slovniku, ktery chcete nacist:\n"
+    putStrLn "Select dictionary by entering its number:\n"
     
-    -- Vstup od uzivatele
+    -- Get selected number
     x <- getLine
                      
-    -- Vratim cestu k souboru, ktery se ma nacist
+    -- Return path to selected dictionary file
     path <- return (vocabularies !! (read x))
     
     result <- getVocabulary path
     return result
 
--- Na zaklade cesty k souboru dany soubor nacte
+-- Reads dictionary file based on path
 getVocabulary str = do
     handle <- openFile str ReadMode  
     
-    -- Nactu obsah souboru
+    -- Load file
     contents <- hGetContents handle
     
-    -- Vytvorim si pole radku - zaznamu
     items <- return (lines contents) 
     
-    -- Prevedu kazdy zaznam na tuple
+    -- Return items in the form of tuples
     vocabulary <- return (map getWords items)
     
     return vocabulary
 
--- Funkce direction se zepta uzivatele zda chce odpovidat na slovo v beznem "smeru" nebo chce poradi slov prevratit
+-- Asks user in which direction he wants to translate
 getDirection = do
-    putStr "\nChcete zachovat standardni smer prekladu (ano) nebo ho obratit (ne):\n"
+    putStr "\nDo you want to keep original direction for translation (yes) or to reverse it (no):\n"
     x <- getLine
-    if(x == "ano") then return True else return False
+    if(x == "yes") then return True else return False
 
--- Vrati nam tuple slov na radku
+-- Get tuple for words in one line
 getWords :: [Char] -> ([Char],[Char])
 getWords x = (firstWord x, secondWord x)
 
--- Vrati nam prvni slovo v radku (pred strednikem)
+-- Returns first word
 firstWord :: [Char] -> [Char]
 firstWord x = if (last x) == ';' then init x else firstWord (init x)
 
--- Vrati nam druhe slovo v radku (za strednikem)
+-- Returns second word
 secondWord :: [Char] -> [Char]
 secondWord (s:x) = if s == ';' then x else (secondWord x)
 
--- Funkce, ktera urci zda nechat v seznamu dany soubor (necha pouze .txt soubory, ktere identifikuji slovnik)
+-- Checks whether file is a dictionary file (based on .txt extension)
 isVocabularyFilePath str = if (drop ((length str)-4) str) == ".txt" then True else False
 
--- Funkce pro vytvoreni vyberu slovniku - zbavi nas pripony souboru a prida cislo
+-- Prints vocabulary name and number for selection
 vocabularyName number str = (show number) ++ ": " ++ (take ((length str)-4) str) ++ "\n"
